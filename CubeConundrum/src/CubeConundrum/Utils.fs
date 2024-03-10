@@ -11,7 +11,7 @@ let stringDigitsOnly (s: string) =
     |> Array.map string
     |> String.concat ""
 
-let getCount (colourName: string) (splitColours: string array) =
+let getCount (colourName: string) splitColours =
     let colourTerm =
         splitColours |> Array.filter (fun (colour: string) -> colour.Contains(colourName))
 
@@ -46,7 +46,7 @@ let constructGame (line: string) =
 
     { Number = number; Sets = sets }
 
-let gameIsPossible (game: Game) =
+let gameIsPossible game =
     let invalidRed =
         game.Sets |> Array.map (_.Red) |> Array.exists (fun count -> count > 12)    // Magic literal
     let invalidGreen =
@@ -58,7 +58,7 @@ let gameIsPossible (game: Game) =
     | false, false, false -> true
     | _ -> false
 
-let gamePower (game: Game) =
+let gamePower game =
     let requiredRed = game.Sets |> Array.map (_.Red) |> Array.max
     let requiredGreen = game.Sets |> Array.map (_.Green) |> Array.max
     let requiredBlue = game.Sets |> Array.map (_.Blue) |> Array.max
