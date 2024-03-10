@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GearRatios", "GearRatios\GearRatios.fsproj", "{36DB8B88-EC4E-476C-A9EF-75CB656BEDF4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E9C4CE6D-2FCD-4B7D-A0A8-07A8D7406495}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GearRatios", "src\GearRatios\GearRatios.fsproj", "{1CA122C8-8A21-4C87-A2CC-839E0E603A8B}"
@@ -18,10 +16,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{36DB8B88-EC4E-476C-A9EF-75CB656BEDF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36DB8B88-EC4E-476C-A9EF-75CB656BEDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36DB8B88-EC4E-476C-A9EF-75CB656BEDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36DB8B88-EC4E-476C-A9EF-75CB656BEDF4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CA122C8-8A21-4C87-A2CC-839E0E603A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CA122C8-8A21-4C87-A2CC-839E0E603A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CA122C8-8A21-4C87-A2CC-839E0E603A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
