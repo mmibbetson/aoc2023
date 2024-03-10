@@ -68,3 +68,15 @@ let partNumbers schematic =
     schematic
     |> Map.filter (fun _ value -> not (Char.IsDigit value) && not (value = '.'))
     |> Map.fold (fun acc key _ -> key |> adjacentNumbers schematic |> Seq.append acc) Seq.empty
+
+let gearRatios schematic =
+    schematic
+    |> Map.filter (fun key value -> value = '*' && (key |> adjacentNumbers schematic |> Seq.length) = 2)
+    |> Map.fold
+        (fun acc key _ ->
+            key
+            |> adjacentNumbers schematic
+            |> Seq.fold (*) 1
+            |> Seq.singleton
+            |> Seq.append acc)
+        Seq.empty
