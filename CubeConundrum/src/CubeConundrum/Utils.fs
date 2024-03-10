@@ -4,78 +4,63 @@ open System
 
 open CubeConundrum.Types
 
+let stringDigitsOnly (s: string) =
+    s
+    |> (_.ToCharArray())
+    |> Array.filter Char.IsDigit
+    |> Array.map string
+    |> String.concat ""
+
 let getCount (colourName: string) (splitColours: string array) =
     let colourTerm =
-        splitColours
-        |> Array.filter (fun (colour: string) -> colour.Contains(colourName))
+        splitColours |> Array.filter (fun (colour: string) -> colour.Contains(colourName))
 
     match Array.length colourTerm with
     | 0 -> 0
     | _ ->
         colourTerm
         |> Array.head
-        |> (_.ToCharArray())
-        |> Array.filter Char.IsDigit
-        |> Array.map string
-        |> String.concat ""
+        |> stringDigitsOnly
         |> int
 
 let constructSet (set: string) =
-    let splitColours = set.Split(",")
+    let splitColours = set.Split(",") in
 
     let redCount = getCount "red" splitColours
     let greenCount = getCount "green" splitColours
     let blueCount = getCount "blue" splitColours
 
-    let gameSet =
-        { Red = redCount
-          Green = greenCount
-          Blue = blueCount }
-
-    gameSet
+    { Red = redCount; Green = greenCount; Blue = blueCount }
 
 let getSets (line: string) =
-    let inputSetPartition = line.Split(":")[1] in
-    
-    inputSetPartition.Split(";") |> Array.map constructSet
+    let setPartition = line.Split(":")[1] in
+
+    setPartition.Split(";") |> Array.map constructSet
 
 let constructGame (line: string) =
-    let gamePrefix = line.Split(":")[0] in
-    let gameNumberChars = gamePrefix.ToCharArray() |> Array.filter Char.IsDigit
-    let gameNumber = String.Concat("", gameNumberChars) |> int
+    let numberPartition = line.Split(":")[0] in
+    let numberChars = numberPartition.ToCharArray() |> Array.filter Char.IsDigit in
 
+    let number = String.Concat("", numberChars) |> int
     let sets = getSets line
 
-    let game = { Number = gameNumber; Sets = sets }
-
-    game
+    { Number = number; Sets = sets }
 
 let gameIsPossible (game: Game) =
-    let sets = game.Sets in
-
     let invalidRed =
-        sets |> Array.map (_.Red) |> Array.exists (fun count -> count > 12)
-
+        game.Sets |> Array.map (_.Red) |> Array.exists (fun count -> count > 12)    // Magic literal
     let invalidGreen =
-        sets |> Array.map (_.Green) |> Array.exists (fun count -> count > 13)
-
+        game.Sets |> Array.map (_.Green) |> Array.exists (fun count -> count > 13)
     let invalidBlue =
-        sets |> Array.map (_.Blue) |> Array.exists (fun count -> count > 14)
+        game.Sets |> Array.map (_.Blue) |> Array.exists (fun count -> count > 14)
 
     match invalidRed, invalidGreen, invalidBlue with
     | false, false, false -> true
     | _ -> false
 
 let gamePower (game: Game) =
-    let sets = game.Sets in
-    
-    let requiredRed =
-        sets |> Array.map (_.Red) |> Array.max
-        
-    let requiredGreen =
-        sets |> Array.map (_.Green) |> Array.max
-        
-    let requiredBlue =
-        sets |> Array.map (_.Blue) |> Array.max
-        
+    let requiredRed = game.Sets |> Array.map (_.Red) |> Array.max
+    let requiredGreen = game.Sets |> Array.map (_.Green) |> Array.max
+    let requiredBlue = game.Sets |> Array.map (_.Blue) |> Array.max
+
     requiredRed * requiredGreen * requiredBlue
