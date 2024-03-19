@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{62035E81-0258-4317-BE59-11653D5540D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trebuchet", "src\Trebuchet\Trebuchet.csproj", "{DCA02C7A-5D0A-450D-B30D-FD26765DC9A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trebuchet", "src\Trebuchet\Trebuchet.fsproj", "{DCA02C7A-5D0A-450D-B30D-FD26765DC9A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
