@@ -76,7 +76,7 @@ let gearRatios schematic =
         (fun acc key _ ->
             key
             |> adjacentNumbers schematic
-            |> Seq.fold (*) 1
+            |> Seq.reduce (*)
             |> Seq.singleton
             |> Seq.append acc)
         Seq.empty
