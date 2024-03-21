@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Scratchcards/1.0.0": {
+      "CubeConundrum/1.0.0": {
         "dependencies": {
           "FSharp.Core": "8.0.101"
         },
         "runtime": {
-          "Scratchcards.dll": {}
+          "CubeConundrum.dll": {}
         }
       },
       "FSharp.Core/8.0.101": {
@@ -66,7 +66,7 @@
     }
   },
   "libraries": {
-    "Scratchcards/1.0.0": {
+    "CubeConundrum/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
